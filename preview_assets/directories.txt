@@ -1,0 +1,6 @@
+images
+css
+js
+backups
+hidden_vault
+assets

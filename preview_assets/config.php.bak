@@ -1,0 +1,6 @@
+<?php
+// Inert training backup; these credentials are dummy data.
+$DB_USER = "demo";
+$DB_PASSWORD = "not_a_real_secret";
+$LAB_TOKEN = "LAB{backups_belong_offline}";
+?>

@@ -1,0 +1,1 @@
+type=SYSCALL msg=audit(1700000000.123:101): arch=c000003e syscall=268 success=yes exit=0 a0=ffffff9c a1=7ffd3a14e920 a2=12ed a3=0 items=1 ppid=1000 pid=1234 auid=1001 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=pts0 ses=1 comm="chmod" exe="/usr/bin/chmod" key="cyberlab_privilege"

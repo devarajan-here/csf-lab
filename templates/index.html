@@ -4,27 +4,27 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#f4f6f9">
-  <title>CyberForge · Hands-on Cybersecurity Training</title>
+  <title>Cyber Lancers · Hands-on Cybersecurity Training</title>
   <style>
     :root {
       color-scheme: light;
-      --bg-darkest: #eaecf2;
-      --bg-main: #f4f6f9;
+      --bg-darkest: #e8edf3;
+      --bg-main: #f5f7fa;
       --panel-bg: #ffffff;
-      --panel-hover: #f0f3f8;
-      --panel-raised: #e8edf5;
-      --border-subtle: #dde3ec;
-      --border-card: #c8d0de;
-      --border-gold: #1e3a8a;
-      --gold: #1e3a8a;
-      --gold-bright: #1d4ed8;
-      --gold-muted: #1e3a8a;
-      --gold-bg: #eff6ff;
-      --text-main: #1a2030;
-      --text-muted: #4a5568;
-      --text-dim: #718096;
+      --panel-hover: #eef1f6;
+      --panel-raised: #e8edf3;
+      --border-subtle: #d4dbe6;
+      --border-card: #c0cad8;
+      --border-gold: #0891b2;
+      --gold: #0891b2;
+      --gold-bright: #06b6d4;
+      --gold-muted: #0e7490;
+      --gold-bg: #ecfeff;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-dim: #94a3b8;
       --green: #16a34a;
-      --green-bg: #dcfce7;
+      --green-bg: #f0fdf4;
       --blue: #2563eb;
       --red: #dc2626;
     }
@@ -32,7 +32,7 @@
     body {
       background: var(--bg-main);
       color: var(--text-main);
-      font: 14px/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font: 14px/1.6 Consolas, "Liberation Mono", "Courier New", monospace;
       min-height: 100vh;
       overflow-x: hidden;
     }
@@ -43,103 +43,97 @@
 
     /* Top Navigation Bar */
     .top-nav {
-      height: 72px;
+      height: 48px;
       border-bottom: 1px solid var(--border-subtle);
-      background: rgba(255, 255, 255, 0.97);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      background: #ffffff;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 40px;
+      padding: 0 28px;
       position: sticky;
       top: 0;
       z-index: 50;
+      font-family: Consolas, monospace;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     }
     .brand {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
       cursor: pointer;
-      padding: 6px 10px;
-      border-radius: 8px;
+      padding: 4px 8px;
+      border-radius: 4px;
       transition: background 0.2s ease;
     }
-    .brand:hover {
-      background: rgba(229, 169, 60, 0.08);
-    }
+    .brand:hover { background: rgba(8,145,178,0.08); }
     .brand-text {
-      font-size: 17px;
-      font-weight: 850;
-      letter-spacing: 0.12em;
-      color: #1a2030;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      color: #0f172a;
       text-transform: uppercase;
     }
-    .brand-text span {
-      color: var(--gold);
-    }
+    .brand-text span { color: var(--gold); }
     .nav-status {
       display: flex;
       align-items: center;
-      gap: 18px;
+      gap: 12px;
     }
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 6px;
     }
     .auth-badge {
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.14em;
-      color: var(--text-muted);
+      letter-spacing: 0.12em;
+      color: var(--text-dim);
       text-transform: uppercase;
     }
     .status-pill {
       display: inline-flex;
       align-items: center;
-      gap: 7px;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.12em;
+      gap: 6px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
       color: var(--gold-bright);
       text-transform: uppercase;
     }
     .dot-gold {
-      width: 7px;
-      height: 7px;
+      width: 6px; height: 6px;
       border-radius: 50%;
       background: var(--gold);
-      box-shadow: 0 0 10px rgba(229, 169, 60, 0.7);
+      box-shadow: 0 0 8px rgba(6,182,212,0.8);
+      animation: blink 2s infinite;
     }
     .dot-green {
-      width: 7px;
-      height: 7px;
+      width: 6px; height: 6px;
       border-radius: 50%;
       background: var(--green);
-      box-shadow: 0 0 10px rgba(74, 222, 128, 0.6);
+      box-shadow: 0 0 8px rgba(63,185,80,0.8);
     }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.4} }
     .nav-btn {
       border: 1px solid var(--border-card);
-      background: #ffffff;
+      background: transparent;
       color: var(--text-muted);
-      padding: 7px 14px;
-      border-radius: 6px;
-      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 4px;
+      font-size: 11px;
       font-weight: 700;
-      letter-spacing: 0.04em;
-      transition: all 0.2s ease;
+      letter-spacing: 0.06em;
+      font-family: Consolas, monospace;
+      transition: all 0.15s ease;
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
     }
-    .nav-btn:hover {
-      border-color: var(--gold);
-      color: var(--gold-bright);
-    }
+    .nav-btn:hover { border-color: var(--gold); color: var(--gold-bright); }
     .nav-btn.active-nav-btn {
       border-color: var(--gold);
-      background: var(--gold-bg);
+      background: rgba(6,182,212,0.1);
       color: var(--gold-bright);
     }
 
@@ -179,73 +173,82 @@
     }
     .eyebrow-badge {
       font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 0.16em;
-      color: var(--gold);
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      color: var(--green);
       text-transform: uppercase;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
       display: inline-block;
+      font-family: Consolas, monospace;
     }
+    .eyebrow-badge::before { content: "# "; color: var(--text-dim); }
     .hero-title-wrap {
       position: relative;
-      margin-bottom: 24px;
+      margin-bottom: 20px;
     }
     .ghost-title {
-      font-size: clamp(38px, 4.8vw, 62px);
-      font-weight: 900;
-      color: #0d1117;
-      letter-spacing: -0.03em;
-      line-height: 1.05;
+      font-size: clamp(28px, 3.5vw, 46px);
+      font-weight: 700;
+      color: var(--text-dim);
+      letter-spacing: 0.02em;
+      line-height: 1.2;
       user-select: none;
       display: block;
       margin-bottom: 4px;
+      font-family: Consolas, monospace;
     }
+    .ghost-title::before { content: "// "; color: var(--text-dim); font-size: 0.7em; }
     .hero-title {
-      font-size: clamp(40px, 5.2vw, 68px);
-      font-weight: 850;
+      font-size: clamp(32px, 4vw, 54px);
+      font-weight: 700;
       color: var(--gold);
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-      font-family: Georgia, "Times New Roman", serif, system-ui;
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+      font-family: Consolas, monospace;
     }
+    .hero-title::before { content: "> "; color: var(--green); font-size: 0.8em; }
     .intro-desc {
-      font-size: 15px;
-      line-height: 1.7;
+      font-size: 13px;
+      line-height: 1.8;
       color: var(--text-muted);
       max-width: 530px;
-      margin-bottom: 38px;
+      margin-bottom: 34px;
+      font-family: Consolas, monospace;
     }
     .cta-group {
       display: flex;
       align-items: center;
-      gap: 22px;
+      gap: 18px;
       flex-wrap: wrap;
     }
     .primary-gold-btn {
-      background: var(--gold);
-      color: #ffffff;
-      font-size: 13px;
-      font-weight: 850;
-      letter-spacing: 0.08em;
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      padding: 15px 28px;
-      border-radius: 6px;
+      padding: 12px 24px;
+      border-radius: 4px;
       display: inline-flex;
       align-items: center;
       gap: 10px;
       transition: all 0.2s ease;
-      box-shadow: 0 4px 20px rgba(229, 169, 60, 0.25);
       cursor: pointer;
+      font-family: Consolas, monospace;
     }
+    .primary-gold-btn::before { content: "$ "; color: var(--green); }
     .primary-gold-btn:hover {
-      background: var(--gold-bright);
-      box-shadow: 0 6px 26px rgba(229, 169, 60, 0.4);
-      transform: translateY(-1px);
+      background: rgba(6,182,212,0.1);
+      color: var(--gold-bright);
+      border-color: var(--gold-bright);
+      box-shadow: 0 0 20px rgba(6,182,212,0.2);
     }
     .cta-subtext {
       font-size: 10px;
-      font-weight: 750;
-      letter-spacing: 0.16em;
+      font-weight: 600;
+      letter-spacing: 0.14em;
       color: var(--text-dim);
       text-transform: uppercase;
       font-family: Consolas, monospace;
@@ -253,10 +256,10 @@
 
     /* Intro Terminal */
     .terminal-window {
-      background: #1a2030;
-      border: 1px solid var(--border-card);
+      background: #0d1117;
+      border: 1px solid #1f293d;
       border-radius: 12px;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+      box-shadow: 0 12px 36px rgba(15, 23, 42, 0.18);
       overflow: hidden;
       cursor: pointer;
       transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
@@ -340,12 +343,14 @@
       margin-bottom: 8px;
     }
     .dash-title {
-      font-size: clamp(28px, 3.5vw, 42px);
-      font-weight: 850;
-      color: #1a2030;
-      letter-spacing: -0.02em;
+      font-size: clamp(22px, 3vw, 34px);
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.04em;
       margin-bottom: 8px;
+      font-family: Consolas, monospace;
     }
+    .dash-title::before { content: "> "; color: var(--green); }
     .dash-quote {
       font-size: 14px;
       color: var(--text-muted);
@@ -353,7 +358,7 @@
       line-height: 1.6;
     }
     .counter-badge-box {
-      border: 1px solid #93c5fd;
+      border: 1px solid var(--border-card);
       background: var(--gold-bg);
       border-radius: 8px;
       padding: 16px 28px;
@@ -399,7 +404,7 @@
     .info-col-val {
       font-size: 15px;
       font-weight: 750;
-      color: #1a2030;
+      color: var(--text-main);
       font-family: Consolas, monospace;
     }
     .lab-status-indicator {
@@ -415,7 +420,7 @@
 
     /* Mentor Briefing Box */
     .mentor-card {
-      border: 1px solid #93c5fd;
+      border: 1px solid var(--border-card);
       background: var(--gold-bg);
       border-radius: 10px;
       padding: 20px 24px;
@@ -429,7 +434,7 @@
       height: 44px;
       border-radius: 8px;
       background: var(--gold);
-      color: #ffffff;
+      color: var(--panel-bg);
       display: grid;
       place-items: center;
       font-size: 20px;
@@ -464,7 +469,7 @@
     .path-title {
       font-size: 18px;
       font-weight: 800;
-      color: #1a2030;
+      color: var(--text-main);
     }
     .path-counter {
       font-size: 11px;
@@ -494,7 +499,7 @@
       height: 38px;
       border-radius: 50%;
       border: 1px solid var(--border-card);
-      background: #ffffff;
+      background: var(--panel-bg);
       display: grid;
       place-items: center;
       font-size: 12px;
@@ -522,7 +527,7 @@
       text-transform: capitalize;
     }
     .path-step.active .path-step-label { color: var(--gold); }
-    .path-step.complete .path-step-label { color: #1a2030; }
+    .path-step.complete .path-step-label { color: var(--text-main); }
     .path-connector {
       position: absolute;
       top: 28px;
@@ -613,7 +618,7 @@
     .card-title {
       font-size: 20px;
       font-weight: 800;
-      color: #1a2030;
+      color: var(--text-main);
       margin-bottom: 4px;
     }
     .card-category {
@@ -686,7 +691,7 @@
     /* Safety Notice */
     .safety-banner {
       border: 1px solid var(--border-card);
-      background: #f0f3f8;
+      background: var(--panel-hover);
       border-radius: 8px;
       padding: 16px 22px;
       display: flex;
@@ -765,7 +770,7 @@
     .mission-title {
       font-size: 26px;
       font-weight: 850;
-      color: #1a2030;
+      color: var(--text-main);
       margin-top: 6px;
     }
     .mission-body {
@@ -774,7 +779,7 @@
 
     /* Diagram */
     .flow-card {
-      background: #f0f3f8;
+      background: var(--panel-hover);
       border: 1px solid var(--border-subtle);
       border-radius: 8px;
       padding: 16px;
@@ -817,7 +822,7 @@
     .section-label {
       font-size: 13px;
       font-weight: 850;
-      color: #1a2030;
+      color: var(--text-main);
       margin: 24px 0 10px;
     }
     .theory-text {
@@ -842,7 +847,7 @@
       margin: 18px 0 26px;
     }
     .cmd-terminal-top {
-      background: #1a2030;
+      background: var(--text-main);
       padding: 9px 16px;
       display: flex;
       justify-content: space-between;
@@ -875,7 +880,7 @@
       font-size: 12.5px;
     }
     th {
-      background: #f0f3f8;
+      background: var(--panel-hover);
       color: var(--text-muted);
       font-size: 10px;
       letter-spacing: 0.1em;
@@ -895,7 +900,7 @@
     /* Answer card */
     .answer-card {
       background: var(--gold-bg);
-      border: 1px solid #93c5fd;
+      border: 1px solid var(--border-card);
       border-radius: 10px;
       padding: 24px;
       margin-top: 28px;
@@ -911,7 +916,7 @@
     .question-text {
       font-size: 14px;
       font-weight: 600;
-      color: #1a2030;
+      color: var(--text-main);
       margin-bottom: 14px;
       display: block;
     }
@@ -921,20 +926,20 @@
     }
     .answer-input {
       flex: 1;
-      background: #ffffff;
+      background: var(--panel-bg);
       border: 1px solid var(--border-card);
       border-radius: 6px;
       padding: 12px 16px;
       font-family: Consolas, monospace;
       font-size: 13.5px;
-      color: #1a2030;
+      color: var(--text-main);
     }
     .answer-input:focus {
       border-color: var(--gold);
     }
     .submit-btn {
       background: var(--gold);
-      color: #ffffff;
+      color: var(--panel-bg);
       font-weight: 850;
       font-size: 12.5px;
       letter-spacing: 0.06em;
@@ -1015,13 +1020,13 @@
   </style>
 </head>
 <body>
-{% if lab_preview %}<div id="preview-banner" style="padding:12px 24px;background:#eff6ff;color:#1e3a8a;border-bottom:1px solid #93c5fd;font-size:13px;display:flex;align-items:center;justify-content:space-between;transition:opacity 0.6s ease,max-height 0.5s ease;overflow:hidden;max-height:60px;" role="note"><span>Local preview · Sample evidence only. Real SSH, auditd, and the complete target require the Ubuntu installer.</span><span id="preview-countdown" style="font-size:11px;font-weight:700;opacity:0.6;margin-left:16px;white-space:nowrap;">Closing in 10s</span></div><script>(function(){var el=document.getElementById('preview-banner'),cd=document.getElementById('preview-countdown'),s=10;var t=setInterval(function(){s--;cd.textContent='Closing in '+s+'s';if(s<=0){clearInterval(t);el.style.opacity='0';el.style.maxHeight='0';el.style.padding='0';el.style.borderBottom='none';setTimeout(function(){el.remove();},600);}},1000);})();</script>{% endif %}
+{% if lab_preview %}<div id="preview-banner" style="padding:12px 24px;background:var(--gold-bg);color:#1e3a8a;border-bottom:1px solid var(--border-card);font-size:13px;display:flex;align-items:center;justify-content:space-between;transition:opacity 0.6s ease,max-height 0.5s ease;overflow:hidden;max-height:60px;" role="note"><span>Local preview · Sample evidence only. Real SSH, auditd, and the complete target require the Ubuntu installer.</span><span id="preview-countdown" style="font-size:11px;font-weight:700;opacity:0.6;margin-left:16px;white-space:nowrap;">Closing in 10s</span></div><script>(function(){var el=document.getElementById('preview-banner'),cd=document.getElementById('preview-countdown'),s=10;var t=setInterval(function(){s--;cd.textContent='Closing in '+s+'s';if(s<=0){clearInterval(t);el.style.opacity='0';el.style.maxHeight='0';el.style.padding='0';el.style.borderBottom='none';setTimeout(function(){el.remove();},600);}},1000);})();</script>{% endif %}
 <noscript>Enable JavaScript to navigate the lab and submit answers.</noscript>
 
   <!-- Top Navigation Header -->
   <header class="top-nav">
     <div class="brand" id="brand-logo" onclick="goToDashboard()" role="button" tabindex="0" title="Click to enter Dashboard">
-      <div class="brand-text">CYBER<span>FORGE</span></div>
+      <div class="brand-text">CYBER <span>LANCERS</span></div>
     </div>
     <div class="nav-status">
       <button class="nav-btn" id="copy-ip" type="button">Copy IP</button>
@@ -1030,10 +1035,6 @@
         <button class="nav-btn" id="btn-nav-dashboard" onclick="goToDashboard()" type="button">Dashboard</button>
       </div>
       <span class="auth-badge">Authorized Training</span>
-      <span class="status-pill" id="global-status" role="status">
-        <span class="dot-gold" id="status-dot"></span>
-        <span id="status-text">Checking</span>
-      </span>
     </div>
   </header>
 
@@ -1049,31 +1050,31 @@
           <h1 class="hero-title">Think like an<br>analyst.</h1>
         </div>
         <p class="intro-desc">
-          CyberForge is a beginner-first security lab where a friendly mentor teaches you what the tools mean, why you're using them, and how to read the evidence from your real Kali Linux machine.
+          Cyber Lancers is a beginner-first security lab where a friendly mentor teaches you what the tools mean, why you're using them, and how to read the evidence from your real Kali Linux machine.
         </p>
         <div class="cta-group">
           <button class="primary-gold-btn" id="btn-enter-forge" onclick="goToDashboard()" type="button">
-            Enter CyberForge →
+            Enter Cyber Lancers →
           </button>
           <span class="cta-subtext">Kali Linux + Isolated Targets + Real Practice</span>
         </div>
       </div>
 
       <div class="intro-right">
-        <div class="terminal-window" onclick="goToDashboard()" title="Click to enter CyberForge Dashboard">
+        <div class="terminal-window" onclick="goToDashboard()" title="Click to enter Cyber Lancers Dashboard">
           <div class="terminal-header">
             <div class="window-dots">
               <span class="window-dot"></span>
               <span class="window-dot"></span>
               <span class="window-dot"></span>
             </div>
-            <div class="terminal-title">CYBERFORGE // BOOT</div>
+            <div class="terminal-title">Cyber Lancers // BOOT</div>
             <div class="terminal-ready">
               <span class="dot-gold"></span> READY
             </div>
           </div>
           <div class="terminal-body">
-            <div><span class="prompt-user">operator@cyberforge:~$</span> <span class="prompt-cmd">./start-training</span></div>
+            <div><span class="prompt-user">operator@cyberlancers:~$</span> <span class="prompt-cmd">./start-training</span></div>
             <div class="term-line">&nbsp;&nbsp;[+] Mentor system <span class="term-dots">........</span> <span class="term-status">ONLINE</span></div>
             <div class="term-line">&nbsp;&nbsp;[+] Kali workstation <span class="term-dots">.....</span> <span class="term-status">REQUIRED</span></div>
             <div class="term-line">&nbsp;&nbsp;[+] Isolated lab <span class="term-dots">.........</span> <span class="term-status">READY</span></div>
@@ -1092,7 +1093,7 @@
   <section id="view-dashboard" class="view-container">
     <div class="dash-header">
       <div>
-        <div class="dash-eyebrow">CyberForge // Beginner Track</div>
+        <div class="dash-eyebrow">Cyber Lancers // Beginner Track</div>
         <h1 class="dash-title">Welcome, Operator.</h1>
         <p class="dash-quote">“We're not memorizing hacking commands. We're learning how to investigate a machine and understand the evidence.”</p>
       </div>
@@ -1114,7 +1115,7 @@
       </div>
       <div>
         <div class="info-col-label">Network</div>
-        <div class="info-col-val">CYBERFORGELAB</div>
+        <div class="info-col-val">CYBERLANCERSLAB</div>
       </div>
       <div class="lab-status-indicator" id="target-health-pill">
         <span class="dot-gold" id="target-dot"></span>
@@ -1124,10 +1125,10 @@
 
     <!-- Mentor Box -->
     <div class="mentor-card">
-      <div class="mentor-avatar">T</div>
+      <div class="mentor-avatar">M</div>
       <div class="mentor-content">
-        <div class="mentor-header">Tejonidhi // Mentor</div>
-        <div class="mentor-quote">“All 15 security tools are fully unlocked for you! Jump into any module, investigate the target machine, understand the evidence, and verify your answers.”</div>
+        <div class="mentor-header">Mentor</div>
+        <div class="mentor-quote">"Jump into any module, investigate the target machine, understand the evidence, and verify your answers."</div>
       </div>
     </div>
 
@@ -1175,7 +1176,7 @@
     <!-- Safety Banner -->
     <div class="safety-banner">
       <div class="safety-tag">
-        <span>⚠</span> CyberForge Safety
+        <span>⚠</span> Cyber Lancers Safety
       </div>
       <div>All practical exercises are designed for the isolated authorized training lab. Never apply the same commands to systems without permission.</div>
     </div>
@@ -1248,7 +1249,7 @@
         <!-- Command Terminal -->
         <div class="cmd-terminal">
           <div class="cmd-terminal-top">
-            <span>kali@cyberforge:~ · Commands for this task</span>
+            <span>kali@cyberlancers:~ · Commands for this task</span>
             <button class="nav-btn" id="copy-cmd-btn" type="button">Copy Command</button>
           </div>
           <pre><code id="mission-command"></code></pre>
@@ -1302,7 +1303,7 @@
     const modules = JSON.parse(document.getElementById('module-data').textContent);
     const byId = new Map(modules.map(m => [m.id, m]));
     const ip = window.location.hostname || '127.0.0.1';
-    const storageKey = 'cyberforge:lab:v1';
+    const storageKey = 'Cyber Lancers:lab:v1';
     const $ = id => document.getElementById(id);
     const interpolate = text => text.replaceAll('{IP}', ip);
 
@@ -1329,7 +1330,7 @@
     let currentMissionId = 1;
     let toastTimer;
 
-    // Migrate progress from the original room without discarding CyberForge progress.
+    // Migrate progress from the original room without discarding Cyber Lancers progress.
     try {
       const current = localStorage.getItem(storageKey);
       const saved = JSON.parse(current || '[]');
@@ -1373,15 +1374,15 @@
       }
     }
 
-    // Determine highest unlocked mission
-    function getHighestUnlockedId() {
+    // Determine current mission
+    function getHighestActiveId() {
       for (let i = 1; i <= modules.length; i++) {
         if (!completed.has(i)) return i;
       }
       return modules.length;
     }
 
-    function isModuleUnlocked(id) {
+    function isModuleActive(id) {
       return true;
     }
 
@@ -1478,7 +1479,7 @@
         stepper.append(step);
       });
 
-      // Render Grid Cards - ALL MODULES UNLOCKED
+      // Render Grid Cards
       const grid = $('modules-cards-grid');
       grid.replaceChildren();
 
@@ -1502,7 +1503,7 @@
         if (isDone) {
           badge.innerHTML = `✓ COMPLETED`;
         } else {
-          badge.innerHTML = `⚡ UNLOCKED`;
+          badge.innerHTML = `⚡ ACTIVE`;
         }
         topRow.append(numSpan, badge);
 
@@ -1596,7 +1597,7 @@
       $('mission-feedback').textContent = isDone ? '✓ You have verified this evidence. Feel free to review or practice again.' : '';
       $('mission-feedback').className = `feedback-msg ${isDone ? 'success' : ''}`;
 
-      // Nav buttons - all unlocked
+      // Nav buttons
       $('mission-prev-btn').disabled = id === 1;
       $('mission-next-btn').disabled = id === modules.length;
     }
